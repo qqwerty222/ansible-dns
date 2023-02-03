@@ -1,0 +1,17 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     testdomain.com. root.testdomain. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+; Name server Info for ns1.testdomain.com
+@       IN      NS      ns1.testdomain.com.
+# {{ last-num-of-ip }}
+6       IN      PTR     ns1.testdomain.com.
+15      IN      PTR     testdomain.com.
+15      IN      PTR     www.testdomain.com.

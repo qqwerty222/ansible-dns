@@ -1,0 +1,13 @@
+--- 
+- name: Create www for index.html
+  file:
+    path: /www
+    state: directory
+
+- name: Create index.html file
+  template:
+    src: index.html.j2
+    dest: /www/index.html
+
+
+

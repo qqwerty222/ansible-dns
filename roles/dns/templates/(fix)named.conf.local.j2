@@ -1,0 +1,11 @@
+#define forward zone
+zone "testdomain.com" {
+        type master;
+        file "/etc/bind/zones/forward.testdomain.com";
+};
+
+#define reverse zone for 10.0.2.0/24
+zone "2.0.10.in-addr.arpa" {
+        type master;
+        file "/etc/bind/zones/reverse.testdomain.com";
+};

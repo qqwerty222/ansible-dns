@@ -1,0 +1,25 @@
+- name: Check current dns
+  notify: dns address
+
+- name: Install resolvconf
+  apt:
+    name: resolvconf
+    update_cache: yes
+
+- name: Force bind9 to work only with ipv4
+  lineinfile: 
+    path: /etc/resolvconf/resolv.conf.d/head
+    line: "nameserver {{ dns-server-ip }}"
+  notify: Restart resolvconf
+
+- name: Check new dns
+  notify: dns address
+
+- name: Get webpage using dns
+  command: curl testdomain.com
+  register: webpage
+    
+- name: Show webpage
+  debug:
+    msg:
+    - '{{ webpage }}'

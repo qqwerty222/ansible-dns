@@ -1,0 +1,3 @@
+- include: install_bind9.yml
+- include: create_dns_zones.yml
+

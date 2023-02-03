@@ -1,0 +1,20 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     testdomain.com. root.testdomain.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+; Define the default name server to ns1.testdomain.com
+@       IN      NS      ns1.testdomain.com.
+
+; Resolve ns1 to server IP address
+; A record for the main DNS
+ns1     IN      A       {{ dns-server-ip }}
+
+; Other domains for testdomain.com
+@       IN      A       {{ webserver-ip }}

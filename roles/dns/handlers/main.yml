@@ -1,0 +1,6 @@
+---
+- name: Restart bind9 
+  systemd: 
+    name: bind9
+    state: restarted
+    enabled: true

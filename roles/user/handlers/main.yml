@@ -1,0 +1,16 @@
+---
+- name: dns address
+  block:
+    - name: Save current dns into variable
+      command: nslookup google.com
+      register: dns-address
+    
+    - name: Show current dns
+      debug:
+        msg:
+        - '{{ dns-address }}'
+
+- name: Restart resolvconf
+  systemd:
+    name: resolvconf
+    state: restarted

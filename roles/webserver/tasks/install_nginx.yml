@@ -1,0 +1,5 @@
+---
+- name: Update repositories and install nginx
+  apt:
+    name: nginx
+    update_cache: yes

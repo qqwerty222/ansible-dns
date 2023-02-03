@@ -1,0 +1,5 @@
+{
+    "ansible.ansible.path": "\\\\wsl.localhost\\Ubuntu-22.04\\home\\bohdan\\.local\\bin/ansible",
+    "ansible.python.interpreterPath": "\\\\wsl.localhost\\Ubuntu-22.04\\usr\\bin/python3",
+    "ansible.validation.lint.path": "\\\\wsl.localhost\\Ubuntu-22.04\\home\\bohdan\\.local\\bin/ansible-lint"
+}

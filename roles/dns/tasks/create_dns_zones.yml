@@ -1,0 +1,23 @@
+- name: Create Forward and Reverse DNS Lookup Zones
+  template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+    backup: yes
+
+- name: Create dir to store zone database file
+  file: 
+    src: /etc/bind/zones
+    state: directory
+
+- name: Fill Forward DNS lookup zone
+  template: 
+    src: forward.testdomain.com.j2
+    dest: /etc/bind/zones/forward.testdomain.com
+
+- name: Fill Reverse DNS lookup zone
+  template: 
+    src: forward.testdomain.com.j2
+    dest: /etc/bind/zones/forward.testdomain.com
+  notify: Restart bind9
+
+# place handler to restart bind9

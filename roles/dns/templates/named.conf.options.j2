@@ -1,0 +1,18 @@
+options {
+        directory "/var/cache/bind";
+
+        dnssec-validation auto;
+
+        listen-on-v6 { any; };
+
+        listen-on {
+        {{ cidr-block }};
+        };
+
+        # allow-query { any; }; uncomment to allow requests for anyone
+        
+        forwarders {
+        8.8.8.8;
+        8.8.8.4;
+        };
+};
