@@ -1,4 +1,4 @@
 ---
-- include: install_nginx.yml
-- include: create_index.yml
-- include: configure_nginx.yml
+- include_tasks: install_nginx.yml
+- include_tasks: create_index.yml
+- include_tasks: configure_nginx.yml

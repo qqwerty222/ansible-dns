@@ -1,0 +1,36 @@
+---
+- name: Update repositories and install resolvconf
+  apt:
+    name: resolvconf
+    update_cache: yes
+
+- name: Enable resolvconf
+  systemd:
+    name: resolvconf
+    enabled: true
+
+- name: Add default dns
+  lineinfile: 
+    path: /etc/resolvconf/resolv.conf.d/head
+    line: "nameserver {{ dns_ip }}"
+
+- name: Update and enable resolvconf
+  command: resolvconf -u
+
+- name: Save current dns into variable
+  command: nslookup google.com
+  register: dns_address
+    
+- name: Show current dns
+  debug:
+    msg:
+    - '{{ dns_address.stdout_lines }}'
+
+- name: Get webpage using dns
+  command: curl testdomain.com
+  register: webpage
+    
+- name: Show webpage
+  debug:
+    msg:
+    - "{{ webpage.stdout_lines }}"

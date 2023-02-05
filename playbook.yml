@@ -1,23 +1,25 @@
 ---
 - name: Install nginx and set up webpage
   hosts: webservers
-  remote_user: bohdan
+  remote_user: ubuntu
   become: true
 
   roles: 
     - webserver
 
-# - name: Configure bind9 and add AAAA record of nginx webserver
-#   hosts: dns_servers
-#   remote_user: bohdan
+- name: Configure bind9, add AAAA record of webserver
+  hosts: dns_servers
+  remote_user: ubuntu
+  become: true
 
-#   roles: 
-#     - dns
+  roles: 
+    - dns
 
-# - name: Connect machine to dns, and get webpage by dns-name
-#   hosts: users
-#   remote_user: bohdan
+- name: Connect machine to dns, and get webpage by dns-name
+  hosts: users
+  remote_user: ubuntu
+  become: true
 
-#   roles: 
-#     - user
+  roles: 
+    - user
 

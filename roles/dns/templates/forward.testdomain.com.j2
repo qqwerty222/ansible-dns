@@ -14,7 +14,7 @@ $TTL    604800
 
 ; Resolve ns1 to server IP address
 ; A record for the main DNS
-ns1     IN      A       {{ dns-server-ip }}
+ns1     IN      A       {{ ansible_default_ipv4.address }}
 
 ; Other domains for testdomain.com
-@       IN      A       {{ webserver-ip }}
+@       IN      A       {{ webserver_ip }}

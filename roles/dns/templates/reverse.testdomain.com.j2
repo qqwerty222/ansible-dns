@@ -11,7 +11,5 @@ $TTL    604800
 
 ; Name server Info for ns1.testdomain.com
 @       IN      NS      ns1.testdomain.com.
-# {{ last-num-of-ip }}
-6       IN      PTR     ns1.testdomain.com.
-15      IN      PTR     testdomain.com.
-15      IN      PTR     www.testdomain.com.
+{{ ansible_default_ipv4.address.split('.')[3] }}      IN      PTR     ns1.testdomain.com.
+{{ webserver_ip.split('.')[3] }}     IN      PTR     testdomain.com.

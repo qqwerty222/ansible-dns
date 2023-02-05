@@ -4,8 +4,9 @@ zone "testdomain.com" {
         file "/etc/bind/zones/forward.testdomain.com";
 };
 
-#define reverse zone for 10.0.2.0/24
-zone "2.0.10.in-addr.arpa" {
+#define reverse zone for {{ cidr_block }}
+# first 3 numbers of cidr reversed
+zone "{{ '.'.join(ansible_default_ipv4.address.split('.')[0:3] | reverse) }}.in-addr.arpa" {
         type master;
         file "/etc/bind/zones/reverse.testdomain.com";
 };

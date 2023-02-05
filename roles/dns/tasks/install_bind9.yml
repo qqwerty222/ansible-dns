@@ -15,13 +15,14 @@
     path: /etc/default/named
     line: OPTIONS="-4 -u bind"
     
-- name: Make sure ufw is active
-  systemd: 
-    name: ufw
-    state: started
+- name: Enable firewall and allow ssh
+  ufw:
+    state: enabled
+    rule: allow
+    name: OpenSSH
 
 - name: Allow firewall to use bind9
-  ufw:
-    rule: allow
-    name: bind9
+  ufw: 
+    rule: allow 
+    name: Bind9
 

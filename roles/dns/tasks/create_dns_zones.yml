@@ -6,7 +6,7 @@
 
 - name: Create dir to store zone database file
   file: 
-    src: /etc/bind/zones
+    path: /etc/bind/zones
     state: directory
 
 - name: Fill Forward DNS lookup zone
@@ -16,8 +16,6 @@
 
 - name: Fill Reverse DNS lookup zone
   template: 
-    src: forward.testdomain.com.j2
-    dest: /etc/bind/zones/forward.testdomain.com
+    src: reverse.testdomain.com.j2
+    dest: /etc/bind/zones/reverse.testdomain.com
   notify: Restart bind9
-
-# place handler to restart bind9
