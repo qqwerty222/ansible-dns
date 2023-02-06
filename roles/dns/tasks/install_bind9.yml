@@ -1,8 +1,7 @@
 ---
-- name: Update repositories and install bind9
+- name: Install bind9
   apt:
     name: bind9
-    update_cache: yes
 
 - name: Change bind9 configuration
   template: 

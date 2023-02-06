@@ -1,8 +1,7 @@
 ---
-- name: Update repositories and install resolvconf
+- name: Install resolvconf
   apt:
     name: resolvconf
-    update_cache: yes
 
 - name: Enable resolvconf
   systemd:
