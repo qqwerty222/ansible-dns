@@ -1,0 +1,5 @@
+# we need only one dns_ip, to use as default dns by test user
+dns_ip: 1.0.1.1     
+webserver_ip: 
+  - 1.0.1.2 
+cidr_block: 1.0.1.0/24
