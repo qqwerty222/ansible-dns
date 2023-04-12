@@ -2,6 +2,7 @@
 - name: Install resolvconf
   apt:
     name: resolvconf
+    update_cache: yes
 
 - name: Enable resolvconf
   systemd:
@@ -13,7 +14,7 @@
     path: /etc/resolvconf/resolv.conf.d/head
     line: "nameserver {{ dns_ip }}"
 
-- name: Update and enable resolvconf
+- name: Update resolvconf
   command: resolvconf -u
 
 - name: Save current dns into variable
@@ -23,7 +24,7 @@
 - name: Show current dns
   debug:
     msg:
-    - '{{ dns_address.stdout_lines }}'
+    - "{{ dns_address.stdout_lines }}"
 
 - name: Get webpage using dns
   command: curl testdomain.com

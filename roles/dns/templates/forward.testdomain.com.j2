@@ -17,4 +17,6 @@ $TTL    604800
 ns1     IN      A       {{ ansible_default_ipv4.address }}
 
 ; Other domains for testdomain.com
-@       IN      A       {{ webserver_ip }}
+{% for ip in webserver_ip %} 
+@       IN      A       {{ ip }} 
+{% endfor %}
