@@ -1,0 +1,3 @@
+group_vars/all.yml
+ssh_key
+hosts
